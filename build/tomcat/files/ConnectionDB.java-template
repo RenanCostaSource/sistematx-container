@@ -1,0 +1,111 @@
+package DAO;
+
+import java.sql.*;
+
+/**
+ * Classe de abstracao da conexao com o banco de dados
+ *
+ * @author robertojunior, Silas Yudi
+ */
+public abstract class ConnectionDB {
+
+    /**
+     * Nome do usuario do banco de dados
+     */
+    private static final String USERNAME = "${DB_USER}";
+    /**
+     * Senha do usuario do banco de dados
+     */
+    private static final String PASSWORD = "${DB_PASS}";
+    /**
+     * Endereco do banco de dados
+     */
+    private static final String URL = "jdbc:mysql://sistematx_db:3306/${DB_NAME}";
+    /**
+     * API JAVA para o banco de dados
+     */
+    private static final String DRIVER = "com.mysql.jdbc.Driver";
+
+    /**
+     * Cria a conexao com o banco de dados
+     *
+     * @return Connection objeto de conexao ou <code>null</code>, caso haja erro
+     */
+    public static Connection create() throws SQLException {
+        try {
+            java.lang.Class.forName(DRIVER);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+    }
+
+    /**
+     * Cria a conexao com o banco de dados e especifica charset
+     *
+     * @param charsetUTF8 True para habilitar UTF8
+     * @return Connection objeto de conexao ou <code>null</code>, caso haja erro
+     */
+    public static Connection create(boolean charsetUTF8) throws SQLException {
+        String charset = charsetUTF8 ? "?useUnicode=true&characterEncoding=UTF-8" : "";
+        try {
+            java.lang.Class.forName(DRIVER);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return DriverManager.getConnection(URL + charset, USERNAME, PASSWORD);
+    }
+
+    /**
+     * Abre a conexao com o banco de dados
+     *
+     * @return Objeto de execucao dos comandos SQL
+     * @throws SQLException Caso nao consiga se conectar ao banco de dados
+     * @see #open(String), #open(String,boolean)
+     */
+    protected Statement open() throws SQLException {
+        Connection con = create();
+        return con.createStatement();
+    }
+
+    /**
+     * Abre a conexao com o banco de dados e prepara uma consulta
+     *
+     * @param sql A SQL a ser consultada
+     * @return Objeto de execucao dos comandos SQL
+     * @throws SQLException Caso nao consiga se conectar ao banco de dados
+     * @see #open(), #open(String,boolean)
+     */
+    protected PreparedStatement open(String sql) throws SQLException {
+        Connection con = create();
+        return con.prepareStatement(sql);
+    }
+
+    /**
+     * Abre a conexao com o banco de dados e prepara uma consulta
+     *
+     * @param sql A SQL a ser consultada
+     * @param returnKeys <b>TRUE</b> caso deva retornar chaves-primarias auto-incrementadas
+     * @return Objeto de execucao dos comandos SQL
+     * @throws SQLException Caso nao consiga se conectar ao banco de dados
+     * @see #open(), #open(sql)
+     */
+    protected PreparedStatement open(String sql, boolean returnKeys) throws SQLException {
+        if (!returnKeys) {
+            return open(sql);
+        }
+        Connection con = create();
+        return con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+    }
+
+    /**
+     * Fecha a conexao com o banco de dados
+     *
+     * @param stm Objeto de execucao dos comandos SQL
+     */
+    protected void close(Statement stm) throws SQLException {
+        Connection c = stm.getConnection();
+        stm.close();
+        c.close();
+    }
+}

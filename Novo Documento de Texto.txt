@@ -1,0 +1,6 @@
+APPNAME=sistematx
+DOMAIN=ufpb.br
+EMAIL_LETS=email_valid@domain.com
+DB_NAME=asterdb
+DB_USER=asterdb
+DB_PASS=123

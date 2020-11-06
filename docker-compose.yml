@@ -1,0 +1,79 @@
+version: "3.4"
+
+services:
+
+    proxy_sistematx:
+        build: ./build/proxy
+        container_name: proxy
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - certs:/etc/letsencrypt
+            - ./volumes/sistematx/marvin_js/js/:/usr/local/src/js/
+        depends_on:
+            - letsencrypt_sistematx
+        networks:
+            - proxy
+            - letsencrypt
+        environment:
+            - APPNAME=${APPNAME}
+            - DOMAIN=${DOMAIN}
+        command: /bin/bash -c "genAppNginx --single-app -o /etc/nginx/conf.d/ && nginx -g 'daemon off;'"
+
+    letsencrypt_sistematx:
+        build: ./build/letsencrypt
+        container_name: letsencrypt
+        volumes:
+            - certs:/etc/letsencrypt
+        depends_on:
+            - tomcat_sistematx
+        networks:
+            - letsencrypt
+        environment:
+            - FQDN=${APPNAME}.${DOMAIN}
+            - EMAIL_LETS=${EMAIL_LETS}
+
+    tomcat_sistematx:
+        build: ./build/tomcat
+        container_name: ${APPNAME}_tomcat
+        restart: always
+        volumes:
+            - ./volumes/licenses/license_web.cxl:/root/.chemaxon/license.cxl:ro
+            - ./volumes/sistematx:/usr/local/tomcat/webapps/ROOT
+            - ./volumes/webservices.war:/usr/local/tomcat/webapps/webservices.war
+        depends_on:
+            - db_sistematx
+        networks:
+            - proxy
+            - db
+        environment:
+            - FQDN=${APPNAME}.${DOMAIN}
+            - DB_NAME=${DB_NAME}
+            - DB_USER=${DB_USER}
+            - DB_PASS=${DB_PASS}
+            - TOMCAT_USER=${TOMCAT_USER}
+            - TOMCAT_PASS=${TOMCAT_PASS}
+        command: /bin/bash -c "orgSistematx --run && catalina.sh run"
+
+    db_sistematx:
+        build: ./build/db
+        container_name: sistematx_db
+        restart: always
+        volumes:
+            - ./volumes/db:/var/lib/mysql
+        environment:
+            - MYSQL_RANDOM_ROOT_PASSWORD=YES
+            - MYSQL_DATABASE=${DB_NAME}
+            - MYSQL_USER=${DB_USER}
+            - MYSQL_PASSWORD=${DB_PASS}
+        networks:
+            - db
+
+volumes:
+    certs:
+
+networks:
+    db:
+    proxy:
+    letsencrypt:

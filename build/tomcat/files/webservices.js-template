@@ -1,0 +1,20 @@
+// Define the default location of webservices
+
+function getDefaultServicesPrefix() {
+	//var servername = "http://150.165.255.201:8080";
+	var servername = "http://${FQDN}";
+
+	var webapp = "/webservices";
+	return servername + webapp;
+}
+
+function getDefaultServices() {
+
+	var base = getDefaultServicesPrefix();
+	var services = {
+			"clean2dws" : base + "/rest-v0/util/convert/clean",
+			"molconvertws" : base + "/rest-v0/util/calculate/molExport",
+			"stereoinfows" : base + "/rest-v0/util/calculate/cipStereoInfo"
+	};
+	return services;
+}

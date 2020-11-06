@@ -1,0 +1,123 @@
+#!/bin/bash
+
+###################################################
+##                                               ##
+## MODIFY FILES FOR SISTEMATX - DOCKER           ##
+##                                               ##
+## BRUNO CORREIA - brunogomescorreia@gmail.com   ##
+##                                               ##
+###################################################
+#
+# -----------------------------------------------------------------
+# Description: In time, i'll do it. Use -h for helped.
+# -----------------------------------------------------------------
+#
+# Version 0.1: Modify database files connection and others
+# 
+################################################################################
+#
+# History:
+#
+# v0.1 2018-04-30, Bruno Correia:
+#       - Initial version.
+#
+################################################################################
+
+USE="
+Use: $(basename "$0") [OPTIONS]
+
+
+OPTIONS:
+
+ -run	Execute this script :)
+
+ -h | --help          Show help
+ -V | --version       Show version
+"
+
+###########################
+
+DIR_TEMPLATE=/tmp
+DIR_LETS=/etc/letsencrypt/live
+
+
+###############
+##           ##
+## FUNCTIONS ##
+##           ##
+###############
+
+extract_version(){
+	# Get version from header
+        grep '^# Version ' "$0" | tail -1 | cut -d : -f 1 | tr -d \#
+}
+
+execution(){
+
+	# $FQDN
+	# $CATALINA_HOME=/usr/local/tomcat
+	# $DB_NAME , $DB_USER , $DB_PASS
+
+	# SUBST $FQDN IN FRONT FILE TEMPLATE
+	envsubst '${FQDN}' < ${DIR_TEMPLATE}/template.jsp-template > ${CATALINA_HOME}/webapps/ROOT/view/template.jsp
+
+	# SUBST $FQDN IN WEBSERVICE FILE TEMPLATE
+	envsubst '${FQDN}' < ${DIR_TEMPLATE}/webservices.js-template > ${CATALINA_HOME}/webapps/ROOT/marvin_js/js/webservices.js
+
+        # SUBST $TOMCAT_USER and $TOMCAT_PASS
+        envsubst '${TOMCAT_USER} ${TOMCAT_PASS}' < ${DIR_TEMPLATE}/tomcat-users.xml-template > ${CATALINA_HOME}/conf/tomcat-users.xml
+
+	# SUBST $DB_NAME, $DB_USER and $DB_PASS in source file connection database
+	envsubst '${DB_NAME} ${DB_USER} ${DB_PASS}' < ${DIR_TEMPLATE}/ConnectionDB.java-template > ${DIR_TEMPLATE}/ConnectionDB.java
+
+	# COMPILATION SOURCE TO CLASS FILE
+	javac ${DIR_TEMPLATE}/ConnectionDB.java -d ${CATALINA_HOME}/webapps/ROOT/WEB-INF/classes/
+	# OBS.: -d option add directory /DAO/ in output file
+
+	# REMOVE JAVA FILE
+	rm ${DIR_TEMPLATE}/ConnectionDB.java
+	
+}
+
+if test -z "$1"; then
+	echo
+        echo "Invalid option. For help, use -h."
+        echo
+        exit 1
+fi
+
+while test -n "$1"; do
+	
+	case "$1" in
+
+		-r | --run)
+			shift
+		;;
+	
+		-h | -H | --help)
+	            	echo "$USE"
+        	        exit 0
+        	;;
+
+	        -v | -V | --version)
+			echo
+		        echo -n $(basename "$0")
+	        	extract_version
+			echo
+                	exit 0
+        	;;
+
+	        *)
+			if test -n "$1"; then
+	        		echo
+		                echo "Invalid option. For help, use -h."
+	        	        echo
+                		exit 1
+	        	fi
+	        ;;
+
+	esac
+    
+done
+
+execution

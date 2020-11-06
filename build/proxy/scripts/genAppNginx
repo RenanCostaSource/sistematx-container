@@ -1,0 +1,216 @@
+#!/bin/bash
+
+###################################################
+##                                               ##
+## GENERATED CONF NGINX APPS - DOCKER            ##
+##                                               ##
+## BRUNO CORREIA - brunogomescorreia@gmail.com   ##
+##                                               ##
+###################################################
+#
+# -----------------------------------------------------------------
+# Description: In time, i'll do it. Use -h for helped.
+# -----------------------------------------------------------------
+#
+# Version 0.2: Add use multiple domain
+# 
+################################################################################
+#
+# History:
+#
+# v0.1 2018-02-26, Bruno Correia:
+#       - Initial version.
+#
+# v0.2 2018-04-06, Bruno Correia:
+#       - Add use multiple domain.
+#
+# v0.3 2018-04-28, Bruno Correia:
+#       - Add single mode app.
+#
+################################################################################
+
+USE="
+Use: $(basename "$0") [OPTIONS]
+
+
+OPTIONS:
+
+ --single-app | For one app only 
+
+ -n | --number-apps   Number apps.
+
+		          e.g.: -n 1 | --number-apps 1
+			
+ -o | --output        Directory output file.
+			
+	        	  e.g.: -o /etc/nginx/conf.d/ | --output /etc/nginx/conf.d/
+
+ -h | --help          Show help
+ -V | --version       Show version
+"
+
+###########################
+
+DIR_TEMPLATE=/tmp
+DIR_LETS=/etc/letsencrypt/live
+
+###############
+##           ##
+## FUNCTIONS ##
+##           ##
+###############
+
+extract_version(){
+	# Get version from header
+        grep '^# Version ' "$0" | tail -1 | cut -d : -f 1 | tr -d \#
+}
+
+execution(){
+
+	# / in directory
+
+	# Get last caracter
+	last_char=`echo $output | rev | cut -c 1`
+
+	# Verify last caracter "/"
+	if [ $last_char == '/' ]; then
+		# Remove last catacter
+		output=`echo $output | sed 's/.\{1\}$//'`
+	fi
+
+	haveCert=0
+
+	if [ $singleApp ]; then
+
+		export FQDN=${APPNAME}.${DOMAIN}
+
+		if [ -d $DIR_LETS/$FQDN ]; then
+
+			echo $FQDN " - Cert found"
+
+			envsubst '${APPNAME} ${DOMAIN} ${FQDN}' < ${DIR_TEMPLATE}/app.template-ssl > ${output}/${APPNAME}.conf
+
+			sed -i "s/http\:\/\//https\:\/\//g" /usr/local/src/js/webservices.js
+
+		else
+			
+			echo $FQDN " - Cert not yet generated"
+			
+			envsubst '${APPNAME} ${DOMAIN} ${FQDN}' < ${DIR_TEMPLATE}/app.template-nossl > ${output}/${APPNAME}.conf
+
+			sed -i "s/https\:\/\//http\:\/\//g" /usr/local/src/js/webservices.js
+
+		fi
+
+	else
+
+		for (( i=1 ; i <= numberapps ; i++ )); do
+
+			APP_TEMP=APPNAME${i}
+			
+			DOMAIN_TEMP=DOMAIN${i}
+
+			export APPNAME=${!APP_TEMP}
+			
+			export DOMAIN=${!DOMAIN_TEMP}
+
+			export FQDN=${APPNAME}.${DOMAIN}
+
+			if [ -d $DIR_LETS/$FQDN ]; then
+
+				echo $FQDN " - Cert found"
+
+				envsubst '${APPNAME} ${DOMAIN} ${FQDN}' < ${DIR_TEMPLATE}/app.template-ssl > ${output}/${APPNAME}.conf
+
+				sed -i "s/http\:\/\//https\:\/\//g" /usr/local/src/js/webservices.js
+			else
+				
+				echo $FQDN " - Cert not yet generated"
+				
+				envsubst '${APPNAME} ${DOMAIN} ${FQDN}' < ${DIR_TEMPLATE}/app.template-nossl > ${output}/${APPNAME}.conf
+
+				sed -i "s/https\:\/\//http\:\/\//g" /usr/local/src/js/webservices.js
+			fi
+
+		done
+	fi
+
+}
+
+if test -z "$1"; then
+	echo
+        echo "Invalid option. For help, use -h."
+        echo
+        exit 1
+fi
+
+while test -n "$1"; do
+	
+	case "$1" in
+
+		-s | --single-app)
+			
+			singleApp=1;
+
+			shift
+			
+		;;
+	
+		-n | --number-apps)
+			
+			numberapps=$2
+			singleApp=0;
+			
+			if test -z "$numberapps"; then
+				echo
+				echo "Need argument -n | --number-apps"
+				echo
+				exit 1
+			fi
+
+			shift;shift
+
+		;;
+
+		-o | --output)
+
+			output=$2
+
+			if test -z "$output"; then
+				echo
+                echo "Need argument -o | --output"
+				echo
+                exit 1
+            fi
+
+            shift;shift
+		;;
+
+
+		-h | -H | --help)
+            	echo "$USE"
+                exit 0
+        	;;
+
+	        -v | -V | --version)
+				echo
+		        echo -n $(basename "$0")
+	        	extract_version
+				echo
+                exit 0
+        	;;
+
+	        *)
+			if test -n "$1"; then
+	        	echo
+                echo "Invalid option. For help, use -h."
+                echo
+                exit 1
+	        fi
+	        ;;
+
+	esac
+    
+done
+
+execution

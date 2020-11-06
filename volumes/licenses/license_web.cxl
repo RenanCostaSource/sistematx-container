@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--PLEASE DO NOT MODIFY THIS FILE AND BE AWARE THAT THE FILE CONTAINS CONFIDENTIAL INFORMATION.-->
+<ChemAxon>
+<License>
+<Field Name="Software" Value="Marvin Applets"/>
+<Field Name="License Term" Value="Free Web"/>
+<Field Name="Licensee" Value="Universidade Federal da Paraiba"/>
+<Field Name="Number of Users" Value="Unlimited"/>
+<Field Name="Expiration Date" Value="2020-03-21"/>
+<Field Name="Support Expiration Date" Value="2020-03-21"/>
+<Field Name="Comment" Value="SistematiX"/>
+<Restriction Name="Server Use" Value="Allowed"/>
+<Signature Value="MCwCFHBQ6/pJvGEIH/7nxrprtMj78fFOAhR5xHdc93WEj1HbV7j8rMH9221U1Q=="/>
+</License>
+<License>
+<Field Name="Software" Value="JChem Base"/>
+<Field Name="License Term" Value="Free Web"/>
+<Field Name="Licensee" Value="Universidade Federal da Paraiba"/>
+<Field Name="Number of Users" Value="Unlimited"/>
+<Field Name="Expiration Date" Value="2020-03-21"/>
+<Field Name="Support Expiration Date" Value="2020-03-21"/>
+<Field Name="Comment" Value="SistematiX"/>
+<Restriction Name="Server Use" Value="Allowed"/>
+<Restriction Name="Search/Min" Value="Unlimited"/>
+<Signature Value="MCwCFEejVjU9zbIkGCjzh3uZYBYa/z2rAhRJcU7iJ/6KDDHzG+xrSJKOW4LPjg=="/>
+</License>
+<License>
+<Field Name="Software" Value="Standardizer"/>
+<Field Name="License Term" Value="Free Web"/>
+<Field Name="Licensee" Value="Universidade Federal da Paraiba"/>
+<Field Name="Number of Users" Value="Unlimited"/>
+<Field Name="Expiration Date" Value="2020-03-21"/>
+<Field Name="Support Expiration Date" Value="2020-03-21"/>
+<Field Name="Comment" Value="SistematiX"/>
+<Restriction Name="B/S/P/E" Value="Standard"/>
+<Restriction Name="Server Use" Value="Allowed"/>
+<Signature Value="MCwCFG67BOsEpPE+Y+nu29ijVjxh3WPwAhRpCqdZZbVDfpq1pqf9Tbwj1tbZuQ=="/>
+</License>
+<License>
+<Field Name="Software" Value="Protonation Plugin Group"/>
+<Field Name="License Term" Value="Free Web"/>
+<Field Name="Licensee" Value="Universidade Federal da Paraiba"/>
+<Field Name="Number of Users" Value="Unlimited"/>
+<Field Name="Expiration Date" Value="2020-03-21"/>
+<Field Name="Support Expiration Date" Value="2020-03-21"/>
+<Field Name="Comment" Value="SistematiX"/>
+<Restriction Name="Server Use" Value="Allowed"/>
+<Signature Value="MC0CFQCUJgrGj5j+XKbTPqdiO+ga/NPbGAIUU7xCgW3TVyae2nqMDJPr2QePegc="/>
+</License>
+<License>
+<Field Name="Software" Value="Partitioning Plugin Group"/>
+<Field Name="License Term" Value="Free Web"/>
+<Field Name="Licensee" Value="Universidade Federal da Paraiba"/>
+<Field Name="Number of Users" Value="Unlimited"/>
+<Field Name="Expiration Date" Value="2020-03-21"/>
+<Field Name="Support Expiration Date" Value="2020-03-21"/>
+<Field Name="Comment" Value="SistematiX"/>
+<Restriction Name="Server Use" Value="Allowed"/>
+<Signature Value="MCwCFH/PWwjHiHz4undt0PvZoAfKhzZZAhR09v7V3j+VW+/H+y9XXd/gWUQfQw=="/>
+</License>
+<License>
+<Field Name="Software" Value="Isomers Plugin Group"/>
+<Field Name="License Term" Value="Free Web"/>
+<Field Name="Licensee" Value="Universidade Federal da Paraiba"/>
+<Field Name="Number of Users" Value="Unlimited"/>
+<Field Name="Expiration Date" Value="2020-03-21"/>
+<Field Name="Support Expiration Date" Value="2020-03-21"/>
+<Field Name="Comment" Value="SistematiX"/>
+<Restriction Name="Server Use" Value="Allowed"/>
+<Signature Value="MC0CFA9PiCS8ej5gcYOkn29J+nYfW5TrAhUAjLvEvlUX/HjgmGhqlmIx+6TJ5o0="/>
+</License>
+<License>
+<Field Name="Software" Value="Markush Enumeration Plugin"/>
+<Field Name="License Term" Value="Free Web"/>
+<Field Name="Licensee" Value="Universidade Federal da Paraiba"/>
+<Field Name="Number of Users" Value="Unlimited"/>
+<Field Name="Expiration Date" Value="2020-03-21"/>
+<Field Name="Support Expiration Date" Value="2020-03-21"/>
+<Field Name="Comment" Value="SistematiX"/>
+<Restriction Name="Server Use" Value="Allowed"/>
+<Signature Value="MCwCFDhYdWgEdXApuWbPeqZVxMkj5DZ+AhQYifiiUgy9FU4d1Q7v4D/4VpZxqA=="/>
+</License>
+<License>
+<Field Name="Software" Value="Structure to Name Plugin"/>
+<Field Name="License Term" Value="Free Web"/>
+<Field Name="Licensee" Value="Universidade Federal da Paraiba"/>
+<Field Name="Number of Users" Value="Unlimited"/>
+<Field Name="Expiration Date" Value="2020-03-21"/>
+<Field Name="Support Expiration Date" Value="2020-03-21"/>
+<Field Name="Comment" Value="SistematiX"/>
+<Restriction Name="Server Use" Value="Allowed"/>
+<Signature Value="MCwCFA77X6R0REEGp+UztjyE9yL4Al3HAhQ392hxJbjwHjhnWNX1WzSTGh3v0w=="/>
+</License>
+<License>
+<Field Name="Software" Value="Web Services Server"/>
+<Field Name="License Term" Value="Free Web"/>
+<Field Name="Licensee" Value="Universidade Federal da Paraiba"/>
+<Field Name="Number of Users" Value="Unlimited"/>
+<Field Name="Expiration Date" Value="2020-03-21"/>
+<Field Name="Support Expiration Date" Value="2020-03-21"/>
+<Field Name="Comment" Value="SistematiX"/>
+<Restriction Name="Server Use" Value="Allowed"/>
+<Signature Value="MC0CFQCCGf3ECN5NVdRRBIuNG9Jh6erYpgIUC1XpHO4HBBPcB7k0sfxX6PTUBr0="/>
+</License>
+<License>
+<Field Name="Software" Value="Structure Checker"/>
+<Field Name="License Term" Value="Free Web"/>
+<Field Name="Licensee" Value="Universidade Federal da Paraiba"/>
+<Field Name="Number of Users" Value="Unlimited"/>
+<Field Name="Expiration Date" Value="2020-03-21"/>
+<Field Name="Support Expiration Date" Value="2020-03-21"/>
+<Field Name="Comment" Value="SistematiX"/>
+<Restriction Name="Server Use" Value="Allowed"/>
+<Signature Value="MCwCFCld8BaSAzHU5rpNqBikhBGYzVYZAhQiX7wBimTdNVtSN1LQ+p+4dM7PdA=="/>
+</License>
+<License>
+<Field Name="Software" Value="NMR Predictor"/>
+<Field Name="License Term" Value="Free Web"/>
+<Field Name="Licensee" Value="Universidade Federal da Paraiba"/>
+<Field Name="Number of Users" Value="Unlimited"/>
+<Field Name="Expiration Date" Value="2020-03-21"/>
+<Field Name="Support Expiration Date" Value="2020-03-21"/>
+<Field Name="Comment" Value="SistematiX"/>
+<Restriction Name="Server Use" Value="Allowed"/>
+<Signature Value="MCwCFEBogeVm8kCPjVjR/lM1ofRDtY77AhRHOkkEIdo/wVAORtKnx435vWmPmQ=="/>
+</License>
+<License>
+<Field Name="Software" Value="Solubility Plugin"/>
+<Field Name="License Term" Value="Free Web"/>
+<Field Name="Licensee" Value="Universidade Federal da Paraiba"/>
+<Field Name="Number of Users" Value="Unlimited"/>
+<Field Name="Expiration Date" Value="2020-03-21"/>
+<Field Name="Support Expiration Date" Value="2020-03-21"/>
+<Field Name="Comment" Value="SistematiX"/>
+<Restriction Name="Server Use" Value="Allowed"/>
+<Signature Value="MC0CFGJwmP+wIF9wvzYg6S1cFcYc/XD0AhUAhP4eE/Z2bfHWGUZs/tQe2Rzujuk="/>
+</License>
+<License>
+<Field Name="Software" Value="Structural Calculations"/>
+<Field Name="License Term" Value="Free Web"/>
+<Field Name="Licensee" Value="Universidade Federal da Paraiba"/>
+<Field Name="Number of Users" Value="Unlimited"/>
+<Field Name="Expiration Date" Value="2020-03-21"/>
+<Field Name="Support Expiration Date" Value="2020-03-21"/>
+<Field Name="Comment" Value="SistematiX"/>
+<Restriction Name="Server Use" Value="Allowed"/>
+<Signature Value="MCwCFH5TNbzaxmWdGdHiArtVvxg6YPHqAhQPSHDsbB9FtKrLSnmLihQH+uL+Gg=="/>
+</License>
+<License>
+<Field Name="Software" Value="Charge Plugin Group"/>
+<Field Name="License Term" Value="Free Web"/>
+<Field Name="Licensee" Value="Universidade Federal da Paraiba"/>
+<Field Name="Number of Users" Value="Unlimited"/>
+<Field Name="Expiration Date" Value="2020-03-21"/>
+<Field Name="Support Expiration Date" Value="2020-03-21"/>
+<Field Name="Comment" Value="SistematiX"/>
+<Restriction Name="Server Use" Value="Allowed"/>
+<Signature Value="MC0CFFsNG6pzNxQ0+PS2NkEf3yZh7iQAAhUAgz6d5MVdGa3QZ4FYtX1Gzu71bV0="/>
+</License>
+<License>
+<Field Name="Software" Value="Conformation Plugin Group"/>
+<Field Name="License Term" Value="Free Web"/>
+<Field Name="Licensee" Value="Universidade Federal da Paraiba"/>
+<Field Name="Number of Users" Value="Unlimited"/>
+<Field Name="Expiration Date" Value="2020-03-21"/>
+<Field Name="Support Expiration Date" Value="2020-03-21"/>
+<Field Name="Comment" Value="SistematiX"/>
+<Restriction Name="Server Use" Value="Allowed"/>
+<Signature Value="MCwCFFofbDRZivGGxaIAzROVgHYVeiXiAhRKAVDobaqVU0XJndUzDRoA/ZkjVw=="/>
+</License>
+<License>
+<Field Name="Software" Value="Geometry Plugin Group"/>
+<Field Name="License Term" Value="Free Web"/>
+<Field Name="Licensee" Value="Universidade Federal da Paraiba"/>
+<Field Name="Number of Users" Value="Unlimited"/>
+<Field Name="Expiration Date" Value="2020-03-21"/>
+<Field Name="Support Expiration Date" Value="2020-03-21"/>
+<Field Name="Comment" Value="SistematiX"/>
+<Restriction Name="Server Use" Value="Allowed"/>
+<Signature Value="MCwCFDB0Li8iB2Op4RH3CQHDcebIivsUAhQT576h35ZfosKHjiwuZ+aG8AiK5g=="/>
+</License>
+<License>
+<Field Name="Software" Value="Huckel Analysis Plugin"/>
+<Field Name="License Term" Value="Free Web"/>
+<Field Name="Licensee" Value="Universidade Federal da Paraiba"/>
+<Field Name="Number of Users" Value="Unlimited"/>
+<Field Name="Expiration Date" Value="2020-03-21"/>
+<Field Name="Support Expiration Date" Value="2020-03-21"/>
+<Field Name="Comment" Value="SistematiX"/>
+<Restriction Name="Server Use" Value="Allowed"/>
+<Signature Value="MCwCFGvlhutYAxRCvM6EhtNrWxZVUipzAhQ7H9GBgdX/fITpQgES7PXrb2kXyg=="/>
+</License>
+<License>
+<Field Name="Software" Value="Refractivity Plugin"/>
+<Field Name="License Term" Value="Free Web"/>
+<Field Name="Licensee" Value="Universidade Federal da Paraiba"/>
+<Field Name="Number of Users" Value="Unlimited"/>
+<Field Name="Expiration Date" Value="2020-03-21"/>
+<Field Name="Support Expiration Date" Value="2020-03-21"/>
+<Field Name="Comment" Value="SistematiX"/>
+<Restriction Name="Server Use" Value="Allowed"/>
+<Signature Value="MCwCFGjIupsXQOr4H7//AIu31RZL7tehAhR0BqYKJ+kKvXU2cEYyVlyM86yHxQ=="/>
+</License>
+<License>
+<Field Name="Software" Value="HBDA Plugin"/>
+<Field Name="License Term" Value="Free Web"/>
+<Field Name="Licensee" Value="Universidade Federal da Paraiba"/>
+<Field Name="Number of Users" Value="Unlimited"/>
+<Field Name="Expiration Date" Value="2020-03-21"/>
+<Field Name="Support Expiration Date" Value="2020-03-21"/>
+<Field Name="Comment" Value="SistematiX"/>
+<Restriction Name="Server Use" Value="Allowed"/>
+<Signature Value="MCwCFB6GBLK9y+TATm8I1n3xj8tOjjFbAhRUDcp7yrsDkqGlg7a4jQYfA+l0vg=="/>
+</License>
+<License>
+<Field Name="Software" Value="3D Alignment"/>
+<Field Name="License Term" Value="Free Web"/>
+<Field Name="Licensee" Value="Universidade Federal da Paraiba"/>
+<Field Name="Number of Users" Value="Unlimited"/>
+<Field Name="Expiration Date" Value="2020-03-21"/>
+<Field Name="Support Expiration Date" Value="2020-03-21"/>
+<Field Name="Comment" Value="SistematiX"/>
+<Restriction Name="Server Use" Value="Allowed"/>
+<Signature Value="MCwCFB8cyuUdg74GybPC42n/jjI6dvoEAhQouhyHFGz0TWmBw8oD7l558Oe8mg=="/>
+</License>
+<License>
+<Field Name="Software" Value="Structural Frameworks Plugin"/>
+<Field Name="License Term" Value="Free Web"/>
+<Field Name="Licensee" Value="Universidade Federal da Paraiba"/>
+<Field Name="Number of Users" Value="Unlimited"/>
+<Field Name="Expiration Date" Value="2020-03-21"/>
+<Field Name="Support Expiration Date" Value="2020-03-21"/>
+<Field Name="Comment" Value="SistematiX"/>
+<Restriction Name="Server Use" Value="Allowed"/>
+<Signature Value="MCwCFGfFegl7NvGXNC5PZMbFiCfah3nmAhQh8dwB/Jcgtxs/hWDIKyRE192IoA=="/>
+</License>
+</ChemAxon>

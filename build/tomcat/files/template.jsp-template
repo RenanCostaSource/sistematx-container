@@ -1,0 +1,151 @@
+<%--
+    TEMPLATE HTML
+--%>
+<%@page import="Security.InputData"%>
+<%@page import="Controller.Navigation"%>
+<%
+    Object auth = request.getRemoteUser();
+    String server = request.getServerName()+"";
+    String title = (new InputData(request)).getAttr(Navigation.TITLE_ATTR);
+%>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title><%
+            if (title.isEmpty()) {
+                out.write("AsterDB - Database of secondary metabolites");
+            } else {
+                out.write(title + " | AsterDB");
+            }
+            %></title>
+
+        <link href="//<%=server%>/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="//<%=server%>/assets/css/sistematx-web.css" rel="stylesheet" type="text/css">
+
+        <link href="//<%=server%>/assets/img/asterdb3.png" rel="icon" type="image/x-icon">
+    </head>
+    <body>
+        <nav id="navbar-principal" class="navbar navbar-fixed-top">
+            <div class="container">
+                <%
+                    String userAgent = request.getHeader("User-Agent");
+                    if (userAgent != null && userAgent.contains("Mobi")) {
+                        //Provavelmente MOBILE
+                %>
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" id="menu-principal-mobile" class="dropdown-toggle"
+                           role="button" data-toggle="dropdown">
+                            AsterDB
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="menu-principal-mobile">
+                            <li><a href="/">Home</a></li>
+
+                            <% if (auth != null) {%>
+                            <li><a href="/<%=Navigation.MANAGEMENT_PAGE%>">Data Management</a></li>
+                                <% } %>
+
+                            <li><a href="/about">About</a></li>
+                            <li><a href="/team">Team</a></li>
+                            <li><a href="/contact">Contact</a></li>
+                            <li><a href="#" class="qhelp">Help</a></li>
+
+                            <% if (auth != null) { %>
+                            <li><a href="/auth/logout">Logout</a></li>
+                                <% } else { %>
+                            <li><a href="/management/admin">Login</a></li>
+                                <% }%>
+                        </ul>
+                    </li>
+                </ul>
+                <%
+                } else {
+                    //Provavelmente DESKTOP
+                %>
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/" class="home">
+                            <img src="//<%=server%>/assets/img/asterdb3.png">
+                        </a>
+                    </li>
+
+                    <% if (auth != null) {%>
+                    <li><a href="<%=Navigation.MANAGEMENT_PAGE%>">Data management</a></li>
+                        <% } %>
+
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/team">Team</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="#" class="qhelp">Help</a></li>
+
+                    <% if (auth != null) { %>
+                    <li class="to-right"><a href="/auth/logout">Logout</a></li>
+                        <% } else { %>
+                    <li class="to-right"><a href="/management/admin">Login</a></li>
+                        <% } %>
+                </ul>
+                <% } %>
+            </div>
+        </nav>
+
+        <%--
+            START INCLUI ARQUIVO
+            Inclui dinamicamente um arquivo de interface com o usuario
+        --%>
+        <%
+            String FILE = String.valueOf(request.getAttribute(Navigation.FILE_ATTR)) + ".jsp";
+        %>
+        <jsp:include page="<%=FILE%>" flush="true"/>
+        <%-- END INCLUI ARQUIVO --%>
+ 
+        <div id="queryhelp" class="modal fade"></div>
+        <footer id="rodape">
+           
+            <div >
+               
+                
+      
+                <a href="https://www.chemaxon.com/freeweb-license-conditions/" target="_blank" title="ChemAxon FreeWeb License">
+                    <img src="//<%=server%>/assets/img/freeweb-150.gif" width="70px">
+                </a>
+                
+                <a href="//http://www5.usp.br/" target="_blank" title="Universidade de S&atilde;o Paulo">
+                    <img src="//<%=server%>/assets/img/usp.png"width="70px">
+                </a>
+                <a href="//www.cnpq.br/" target="_blank" title="Conselho Nacional de Desenvolvimento Cient&iacute;fico e Tecnol&oacute;gico">
+                    <img src="//<%=server%>/assets/img/cnpq.png"width="70px">
+                </a>
+                <a href="https://www.chemaxon.com/" target="_blank" title="ChemAxon">
+                    <img src="//<%=server%>/assets/img/chemaxon.gif" height="25" width="140">
+                </a>
+                
+                <a href="//www.chemdoodle.com/" target="_blank" title="ChemDoodle - The Universal Chemical Drawing Standard">
+                    <img src="//<%=server%>/assets/img/doodle.gif"width="70px">
+                </a>
+                <a href="//${FQDN}/" target="_blank" title="SistematX">
+                    <img src="//<%=server%>/assets/img/Sistematlogo2.png"width="70px">
+                </a>
+                <a href="//resnetnpnd.org/" target="_blank" title="ResNet NPND - Research Network Natural Products against Neglected Diseases">
+                    <img src="//<%=server%>/assets/img/resnetnpnd.png"width="70px">
+                </a>
+                <a href="http://www.fapesp.br/" target="_blank" title="Fundação de Amparo à Pesquisa do Estado de São Paulo">
+                    <img src="//<%=server%>/assets/img/logo_fapesp.png"width="70px">
+                </a>
+        
+            </div>
+            <br>
+            <strong>Laboratory of Pharmacognosy - Universidade de S&atilde;o Paulo  </strong>
+            <br>
+            
+           
+            
+        </footer>
+
+        <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script async src="//<%=server%>/assets/js/external/bootstrap.min.js"></script>
+        <script defer src="//<%=server%>/assets/js/external/jquery.autocomplete.js"></script>
+        <script defer src="//<%=server%>/assets/js/search/queryhelp.js"></script>
