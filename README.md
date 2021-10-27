@@ -23,7 +23,7 @@
 
 Clone the repository with:
 ```
-user@host:~# git clone https://github.com/bgcorreia/sistematx.git
+user@host:~# git clone https://github.com/renancostasource/sistematx.git
 ```
 
 ## Pre-Execution
