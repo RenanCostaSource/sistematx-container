@@ -8,6 +8,8 @@ COPY ./conf/app.template-ssl /tmp/
 
 COPY ./scripts/genAppNginx /usr/local/bin/
 
+RUN chmod 777 -R /usr/local/bin/
+
 RUN apt-get update && \
     apt-get install openssl -y
 

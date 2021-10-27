@@ -54,7 +54,7 @@ services:
             - DB_PASS=${DB_PASS}
             - TOMCAT_USER=${TOMCAT_USER}
             - TOMCAT_PASS=${TOMCAT_PASS}
-        command: /bin/bash -c "orgSistematx --run && catalina.sh run"
+        command: /bin/bash -c "catalina.sh run"
 
     db_sistematx:
         build: ./build/db

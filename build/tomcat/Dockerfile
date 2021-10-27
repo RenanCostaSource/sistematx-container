@@ -5,7 +5,7 @@ MAINTAINER Bruno Correia <brunogomescorreia@gmail.com>
 
 # INSTALL PACKETS
 RUN apt-get update -y && \ 
-	apt-get install gettext-base openjdk-8-jdk -y
+	apt-get install openjdk-11-jdk -y
 
 COPY ./files/context.xml /usr/local/tomcat/webapps/manager/META-INF/
 
